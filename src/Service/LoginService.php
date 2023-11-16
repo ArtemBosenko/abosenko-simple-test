@@ -65,7 +65,15 @@ class LoginService
         return false;
     }
 
-    public function register($email, $password, $csrfTokenRaw): bool
+    /**
+     * To register a user.
+     *
+     * @param string $email Email address.
+     * @param string $password Password.
+     * @param string $csrfTokenRaw CSRF token.
+     * @return bool
+     */
+    public function register(string $email, string $password, string $csrfTokenRaw): bool
     {
         if ($this->validator->check($email, $password, $csrfTokenRaw)) {
             if (session_status() == PHP_SESSION_NONE) {
@@ -78,11 +86,24 @@ class LoginService
         return false;
     }
 
+    /**
+     * To check if the email already exists.
+     *
+     * @param string $email Email address.
+     * @return bool
+     */
     public function hasEmail(string $email): bool
     {
         return ! empty($this->userModel->findBy('email', $email));
     }
 
+    /**
+     * To check if the password correct.
+     *
+     * @param string $email Email address.
+     * @param string $password Password.
+     * @return bool
+     */
     public function isValidPassword(string $email, string $password): bool
     {
         $user = $this->userModel->findBy('email', $email);
