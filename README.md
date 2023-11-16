@@ -131,5 +131,6 @@ environment:
 # How to using this functionality #
 1. Clone repo git clone git@github.com:ArtemBosenko/abosenko-simple-test.git
 2. Create container docker-compose up -d
-3. Please, going to [localhost](http://localhost:8080)
-4. After you can start app.
+3. Run Composer install
+4. Please, going to [localhost](http://localhost:8080)
+5. After you can start app.
