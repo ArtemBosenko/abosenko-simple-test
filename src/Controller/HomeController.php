@@ -12,6 +12,11 @@ use App\Models\User;
 #[RegisterController('HomeController')]
 class HomeController extends AbstractController
 {
+    /**
+     * The homepage view route.
+     *
+     * @return void
+     */
     #[RegisterRoute('/', 'home')]
     public function home(): void
     {

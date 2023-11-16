@@ -2,15 +2,37 @@
 
 namespace App\Route;
 
+/**
+ * Class Router.
+ */
 class Router
 {
-    protected array $routes = [];
+    /**
+     * The array of routes.
+     *
+     * @var array
+     */
+    private array $routes = [];
 
+    /**
+     * To add a route.
+     *
+     * @param string $route Route name.
+     * @param string $controller Controller name.
+     * @param string $action Action name.
+     * @return void
+     */
     public function addRoute(string $route, string $controller, string $action): void
     {
         $this->routes[$route] = ['controller' => $controller, 'action' => $action];
     }
 
+    /**
+     * To dispatch the route.
+     *
+     * @param string|null $uri URI.
+     * @return void
+     */
     public function dispatch(string $uri = null): void
     {
         $uri = ! empty($uri) ? $uri : $_SERVER['REQUEST_URI'];

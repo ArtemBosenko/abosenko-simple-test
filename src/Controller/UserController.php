@@ -19,6 +19,9 @@ use App\Service\LoginService;
 #[RegisterController('UserController')]
 class UserController extends AbstractController
 {
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
         $db = PDOInstance::get_instance();
@@ -33,6 +36,12 @@ class UserController extends AbstractController
         $db->exec($sql);
     }
 
+    /**
+     * The login route.
+     *
+     * @return void
+     * @throws \Exception
+     */
     #[RegisterRoute('/login', 'login')]
     public function login(): void
     {
@@ -57,6 +66,12 @@ class UserController extends AbstractController
         $this->render('user/login', ['pageTitle' => 'Login Page', 'formData' => isset($formData) ? $formData : []]);
     }
 
+    /**
+     * The registration route.
+     *
+     * @return void
+     * @throws \Exception
+     */
     #[RegisterRoute('/register', 'register')]
     public function register(): void
     {
@@ -80,6 +95,11 @@ class UserController extends AbstractController
         $this->render('user/register', ['pageTitle' => 'Register Page', 'formData' => isset($formData) ? $formData : []]);
     }
 
+    /**
+     * The admin route.
+     *
+     * @return void
+     */
     #[RegisterRoute('/admin', 'admin')]
     public function admin(): void
     {

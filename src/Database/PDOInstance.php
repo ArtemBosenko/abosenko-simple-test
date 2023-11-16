@@ -5,8 +5,16 @@ namespace App\Database;
 use PDO;
 use PDOException;
 
+/**
+ * Class PDOInstance singletone
+ */
 class PDOInstance
 {
+    /**
+     * The instance.
+     *
+     * @var PDO|null
+     */
     private static ?PDO $pdoInstance = null;
 
     /**

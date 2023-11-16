@@ -5,15 +5,36 @@ namespace App\Form\Validator;
 use App\Form\Handler\ErrorHandler;
 use App\Service\LoginService;
 
+/**
+ * Class WrongEmailValidator.
+ */
 class WrongEmailValidator extends AbstractFormValidator
 {
-    private $loginService;
+    /**
+     * The LoginService.
+     *
+     * @var LoginService
+     */
+    private LoginService $loginService;
 
+    /**
+     * The constructor.
+     *
+     * @param LoginService $loginService
+     */
     public function __construct(LoginService $loginService)
     {
         $this->loginService = $loginService;
     }
 
+    /**
+     * To check statements.
+     *
+     * @param string $email Email address.
+     * @param string $password Password.
+     * @param string|null $csrfTokenRaw CSRF token.
+     * @return bool
+     */
     public function check(string $email, string $password, string $csrfTokenRaw = null): bool
     {
         if (!$this->loginService->hasEmail($email)) {

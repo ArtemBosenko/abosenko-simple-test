@@ -6,8 +6,18 @@ use App\Attribute\RegisterRoute;
 use App\Route\Router;
 use ReflectionClass;
 
+/**
+ * Abstraction AbstractController.
+ */
 abstract class AbstractController
 {
+    /**
+     * Base controller render method.
+     *
+     * @param string $view The view to render.
+     * @param array $data The data to pass to the view.
+     * @return void
+     */
     protected function render(string $view, array $data = []): void
     {
         extract($data);
@@ -20,6 +30,12 @@ abstract class AbstractController
     }
 
 
+    /**
+     * To register all routes.
+     *
+     * @param Router $router Class Router.
+     * @return void
+     */
     public static function registerRoutes(Router $router): void
     {
         $reflectionClass = new ReflectionClass(static::class);

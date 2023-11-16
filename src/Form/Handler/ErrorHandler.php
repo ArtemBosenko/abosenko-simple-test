@@ -2,9 +2,18 @@
 
 namespace App\Form\Handler;
 
+/**
+ * Class ErrorHandler.
+ */
 class ErrorHandler
 {
-    public static function addError(string $message)
+    /**
+     * To add an error message.
+     *
+     * @param string $message The error message.
+     * @return void
+     */
+    public static function addError(string $message): void
     {
         if (session_status() == PHP_SESSION_NONE) {
             @session_start();
@@ -14,6 +23,11 @@ class ErrorHandler
         }
     }
 
+    /**
+     * To display error messages and clear the session.
+     *
+     * @return array
+     */
     public static function getErrors(): array
     {
         $result = [];
@@ -24,7 +38,12 @@ class ErrorHandler
         return $result;
     }
 
-    public static function has_errors()
+    /**
+     * To check if there are any errors.
+     *
+     * @return bool|int|null
+     */
+    public static function has_errors(): bool|int|null
     {
         if (isset($_SESSION['errors'])) {
             return count($_SESSION['errors']);
