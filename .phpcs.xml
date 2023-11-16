@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<ruleset name="Test app" >
+    <rule ref="PSR12" >
+        <exclude name="Squiz.Commenting.FileComment.Missing" />
+        <exclude name="Squiz.Commenting.FileComment.MissingPackageTag" />
+        <exclude name="PHPCompatibility.Constants.NewConstants.libxml_html_nodefdtdFound" />
+        <exclude name="PHPCompatibility.Constants.NewConstants.libxml_html_noimpliedFound" />
+        <exclude name="PHPCompatibility.Syntax.NewFunctionArrayDereferencing.Found" />
+        <exclude name="PHPCompatibility.Operators.NewOperators.t_coalesceFound" />
+        <exclude name="PHPCompatibility.Operators.NewOperators.t_spaceshipFound" />
+    </rule>
+    <exclude-pattern>*.(js|css)</exclude-pattern>
+    <exclude-pattern>vendor/*</exclude-pattern>
+</ruleset>
+<!--Use "php vendor/bin/phpcbf ." to run sniffer-->
