@@ -22,7 +22,7 @@ if (\App\Form\Handler\ErrorHandler::has_errors()) {
     <?php
 }
 if (isset($view)) {
-    include "views/$view.php";
+    include "../views/$view.php";
 }
 ?>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
