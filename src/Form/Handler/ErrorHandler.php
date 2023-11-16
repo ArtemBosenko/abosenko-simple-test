@@ -10,8 +10,8 @@ class ErrorHandler
             @session_start();
         }
         if (empty($_SESSION['errors']) || (!empty($_SESSION['errors']) && !in_array($message, $_SESSION['errors'], true))) {
-        }
             $_SESSION['errors'][] = $message;
+        }
     }
 
     public static function getErrors(): array

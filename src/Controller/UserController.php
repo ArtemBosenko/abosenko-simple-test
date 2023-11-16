@@ -45,14 +45,14 @@ class UserController extends AbstractController
             $loginService->setValidator($validator, new User());
             $success = $loginService->logIn($_POST['email'], $_POST['password'], 'login');
             if ($success) {
-                $_SESSION['form_data'] = $_POST;
                 header("Location: " . RouteRegistry::getRegisteredRoute('admin'));
                 exit();
             }
-        }
-        if (isset($_SESSION['form_data'])) {
-            $formData = $_SESSION['form_data'];
-            unset($_SESSION['form_data']);
+            $_SESSION['form_data'] = $_POST;
+            if (isset($_SESSION['form_data'])) {
+                $formData = $_SESSION['form_data'];
+                unset($_SESSION['form_data']);
+            }
         }
         $this->render('user/login', ['pageTitle' => 'Login Page', 'formData' => isset($formData) ? $formData : []]);
     }
@@ -71,10 +71,11 @@ class UserController extends AbstractController
                 header("Location: " . RouteRegistry::getRegisteredRoute('admin'));
                 exit();
             }
-        }
-        if (isset($_SESSION['form_data'])) {
-            $formData = $_SESSION['form_data'];
-            unset($_SESSION['form_data']);
+            $_SESSION['form_data'] = $_POST;
+            if (isset($_SESSION['form_data'])) {
+                $formData = $_SESSION['form_data'];
+                unset($_SESSION['form_data']);
+            }
         }
         $this->render('user/register', ['pageTitle' => 'Register Page', 'formData' => isset($formData) ? $formData : []]);
     }
