@@ -23,9 +23,9 @@ abstract class AbstractController
         extract($data);
         $pageTitle = $pageTitle ?? 'Page Title';
         if (isset($renderRaw)) {
-            include "../views/$view.php";
+            include APP_ROOT . "/views/$view.php";
         } else {
-            include "../views/main.php";
+            include APP_ROOT ."/views/main.php";
         }
     }
 
